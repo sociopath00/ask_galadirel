@@ -32,7 +32,7 @@ def generate_answer(query: str,
     ])
 
     # Initialize the model
-    llm = ChatOpenAI(model=model_name, temperature=0)
+    llm = ChatOpenAI(model=model_name, temperature=0.3)
 
     # Create the chain
     chain = prompt | llm
