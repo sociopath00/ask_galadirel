@@ -1,0 +1,11 @@
+temp*.py
+.venv
+venv
+env
+.env
+__pycache__
+*.pyc
+.idea
+*.pdf
+*.csv
+temp*.ipynb

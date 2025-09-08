@@ -1,0 +1,13 @@
+2025-09-08 16:17:40,537 - MiddleEarth - DEBUG - Deleted the old collection: middle_earth
+2025-09-08 16:17:40,537 - MiddleEarth - DEBUG - Reading the PDF file ./data/fellowship_of_ring.pdf
+2025-09-08 16:17:42,625 - MiddleEarth - INFO - Chunking process has started
+2025-09-08 16:17:44,428 - MiddleEarth - INFO - New collection is created: middle_earth
+2025-09-08 16:18:52,305 - MiddleEarth - DEBUG - Deleted the old collection: middle_earth
+2025-09-08 16:18:52,306 - MiddleEarth - DEBUG - Reading the PDF file ./data/fellowship_of_ring.pdf
+2025-09-08 16:18:54,416 - MiddleEarth - INFO - Chunking process has started
+2025-09-08 16:18:56,603 - MiddleEarth - INFO - New collection is created: middle_earth
+2025-09-08 16:19:34,206 - MiddleEarth - DEBUG - Deleted the old collection: middle_earth
+2025-09-08 16:19:34,207 - MiddleEarth - DEBUG - Reading the PDF file ./data/fellowship_of_ring.pdf
+2025-09-08 16:19:36,325 - MiddleEarth - INFO - Chunking process has started
+2025-09-08 16:19:38,055 - MiddleEarth - INFO - New collection is created: middle_earth
+2025-09-08 16:23:10,684 - MiddleEarth - INFO - All the documents are stored in Qdrant vector db
