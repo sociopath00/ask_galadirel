@@ -14,7 +14,7 @@ def generate_answer(query: str,
 
     Args:
         query: User's query
-        results: Context retrived from the vector db
+        retrieved_docs: Context retrived from the vector db
         model_name: Name of the model used for answer generation (Default: gpt-4o-mini)
 
     Returns:
