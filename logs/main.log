@@ -11,3 +11,75 @@
 2025-09-08 16:19:36,325 - MiddleEarth - INFO - Chunking process has started
 2025-09-08 16:19:38,055 - MiddleEarth - INFO - New collection is created: middle_earth
 2025-09-08 16:23:10,684 - MiddleEarth - INFO - All the documents are stored in Qdrant vector db
+2025-09-08 19:42:11,783 - MiddleEarth - INFO - Connecting to VectorDB
+2025-09-08 19:42:14,780 - MiddleEarth - INFO - Retrieved the results for query: What was the precious?
+2025-09-08 19:42:36,171 - MiddleEarth - INFO - Connecting to VectorDB
+2025-09-08 19:42:40,435 - MiddleEarth - INFO - Retrieved the results for query: What was the precious?
+2025-09-08 19:51:49,462 - MiddleEarth - DEBUG - Deleted the old collection: middle_earth
+2025-09-08 19:51:49,464 - MiddleEarth - DEBUG - Reading the PDF file ./data/fellowship_of_ring.pdf
+2025-09-08 19:51:51,702 - MiddleEarth - INFO - Chunking process has started
+2025-09-08 19:51:53,393 - MiddleEarth - INFO - New collection is created: middle_earth
+2025-09-08 19:54:49,765 - MiddleEarth - INFO - All the documents are stored in Qdrant vector db
+2025-09-08 19:54:50,820 - MiddleEarth - INFO - Connecting to VectorDB
+2025-09-08 19:54:53,617 - MiddleEarth - INFO - Retrieved the results for query: What was the precious?
+2025-09-08 20:13:51,452 - MiddleEarth - INFO - Connecting to VectorDB
+2025-09-08 20:13:54,537 - MiddleEarth - INFO - Retrieved the results for query: What was the age of Frodo in Long unexpected party?
+2025-09-08 20:13:54,538 - MiddleEarth - INFO - Stating the generation
+2025-09-08 20:13:56,483 - MiddleEarth - INFO - Answer generated successfully
+2025-09-08 20:22:06,884 - MiddleEarth - DEBUG - Deleted the old collection: middle_earth
+2025-09-08 20:22:06,885 - MiddleEarth - DEBUG - Reading the PDF file ./data/fellowship_of_ring.pdf
+2025-09-08 20:22:09,036 - MiddleEarth - INFO - Chunking process has started
+2025-09-08 20:22:10,842 - MiddleEarth - INFO - New collection is created: middle_earth
+2025-09-08 20:24:55,309 - MiddleEarth - INFO - All the documents are stored in Qdrant vector db
+2025-09-08 20:24:56,441 - MiddleEarth - INFO - Connecting to VectorDB
+2025-09-08 20:24:58,505 - MiddleEarth - INFO - Retrieved the results for query: What was the precious?
+2025-09-08 20:24:58,505 - MiddleEarth - INFO - Stating the generation
+2025-09-08 20:25:00,187 - MiddleEarth - INFO - Answer generated successfully
+2025-09-08 20:25:38,412 - MiddleEarth - INFO - Connecting to VectorDB
+2025-09-08 20:25:41,455 - MiddleEarth - INFO - Retrieved the results for query: How Gandalf died?
+2025-09-08 20:25:41,456 - MiddleEarth - INFO - Stating the generation
+2025-09-08 20:25:42,854 - MiddleEarth - INFO - Answer generated successfully
+2025-09-08 20:26:38,638 - MiddleEarth - INFO - Connecting to VectorDB
+2025-09-08 20:26:42,340 - MiddleEarth - INFO - Retrieved the results for query: What was the age of Frodo in Long unexpected party?
+2025-09-08 20:26:42,340 - MiddleEarth - INFO - Stating the generation
+2025-09-08 20:26:44,103 - MiddleEarth - INFO - Answer generated successfully
+2025-09-08 20:27:31,465 - MiddleEarth - INFO - Connecting to VectorDB
+2025-09-08 20:27:34,378 - MiddleEarth - INFO - Retrieved the results for query: Who is Gandalf and how he died?
+2025-09-08 20:27:34,379 - MiddleEarth - INFO - Stating the generation
+2025-09-08 20:27:36,373 - MiddleEarth - INFO - Answer generated successfully
+2025-09-08 20:28:24,617 - MiddleEarth - INFO - Connecting to VectorDB
+2025-09-08 20:28:27,612 - MiddleEarth - INFO - Retrieved the results for query: How ring has come to Frodo?
+2025-09-08 20:28:27,613 - MiddleEarth - INFO - Stating the generation
+2025-09-08 20:28:29,322 - MiddleEarth - INFO - Answer generated successfully
+2025-09-08 20:29:20,671 - MiddleEarth - INFO - Connecting to VectorDB
+2025-09-08 20:29:23,726 - MiddleEarth - INFO - Retrieved the results for query: Can you tell me the origin of the Ring?
+2025-09-08 20:29:23,727 - MiddleEarth - INFO - Stating the generation
+2025-09-08 20:29:25,168 - MiddleEarth - INFO - Answer generated successfully
+2025-09-08 20:31:27,925 - MiddleEarth - INFO - Connecting to VectorDB
+2025-09-08 20:31:31,115 - MiddleEarth - INFO - Retrieved the results for query: Can you tell me the origin of the Ring?
+2025-09-08 20:31:31,116 - MiddleEarth - INFO - Stating the generation
+2025-09-08 20:31:33,518 - MiddleEarth - INFO - Answer generated successfully
+2025-09-08 20:31:50,445 - MiddleEarth - INFO - Connecting to VectorDB
+2025-09-08 20:31:53,645 - MiddleEarth - INFO - Retrieved the results for query: Can you tell me the origin of the Ring?
+2025-09-08 20:31:53,646 - MiddleEarth - INFO - Stating the generation
+2025-09-08 20:31:54,880 - MiddleEarth - INFO - Answer generated successfully
+2025-09-08 20:32:25,884 - MiddleEarth - INFO - Connecting to VectorDB
+2025-09-08 20:32:29,177 - MiddleEarth - INFO - Retrieved the results for query: Can you tell me the origin of the Ring?
+2025-09-08 20:32:29,178 - MiddleEarth - INFO - Stating the generation
+2025-09-08 20:32:30,002 - MiddleEarth - INFO - Answer generated successfully
+2025-09-08 20:34:23,422 - MiddleEarth - INFO - Connecting to VectorDB
+2025-09-08 20:34:26,527 - MiddleEarth - INFO - Retrieved the results for query: Can you tell me the origin of the Ring?
+2025-09-08 20:34:26,527 - MiddleEarth - INFO - Stating the generation
+2025-09-08 20:34:31,591 - MiddleEarth - INFO - Answer generated successfully
+2025-09-08 20:34:38,798 - MiddleEarth - INFO - Connecting to VectorDB
+2025-09-08 20:34:41,890 - MiddleEarth - INFO - Retrieved the results for query: Can you tell me the origin of the Ring?
+2025-09-08 20:34:41,891 - MiddleEarth - INFO - Stating the generation
+2025-09-08 20:34:46,745 - MiddleEarth - INFO - Answer generated successfully
+2025-09-08 20:37:27,042 - MiddleEarth - INFO - Connecting to VectorDB
+2025-09-08 20:37:30,342 - MiddleEarth - INFO - Retrieved the results for query: Can you tell me the origin of the Ring?
+2025-09-08 20:37:30,343 - MiddleEarth - INFO - Stating the generation
+2025-09-08 20:37:33,420 - MiddleEarth - INFO - Answer generated successfully
+2025-09-08 20:37:39,025 - MiddleEarth - INFO - Connecting to VectorDB
+2025-09-08 20:37:42,061 - MiddleEarth - INFO - Retrieved the results for query: Can you tell me the origin of the Ring?
+2025-09-08 20:37:42,061 - MiddleEarth - INFO - Stating the generation
+2025-09-08 20:37:45,504 - MiddleEarth - INFO - Answer generated successfully

@@ -19,3 +19,11 @@ COLLECTION_NAME = "middle_earth"
 CHUNK_SIZE = 800
 CHUNK_OVERLAP = 200
 
+# Prompts
+SYS_PROMPT = """
+You are a helpful assistant. Use provided context to answer the user's questions. 
+Do not answer anything other than provided context. 
+If question is asked outside the context answer with "I am under influence of Sauron so I cannot see outside Middle Earth".
+"""
+
+

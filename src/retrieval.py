@@ -5,27 +5,33 @@ from langchain_openai import OpenAIEmbeddings
 from qdrant_client import QdrantClient
 
 import config
+from src.loggers import logger
 
 
 def retrieve_documents(client: QdrantClient,
                        query: str,
                        collection_name: str,
-                       k: int) -> List:
+                       k: int=5,
+                       vector_embedding_model: str="text-embedding-3-small",
+                       sparse_embedding_model: str="Qdrant/bm25") -> List:
     """Retrieve Top k documents from the Qdrant vector DB
 
     Args:
         client: Qdrant client object to setup a connection
         query: Search query from users
         collection_name: Name of the collection
-        k: Int to return Top K results
+        k: Int to return Top K results (default: 5)
+        vector_embedding_model: Model to be used for dense vector creation (default: text-embedding-3-small)
+        sparse_embedding_model: Model to be used for sparse embedding creation (default: Qdrant/bm25)
 
     Returns:
         List of retrived documents. Size of the list is k
     """
     # Initialize embeddings (must match index.py)
-    embeddings = OpenAIEmbeddings()
-    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+    embeddings = OpenAIEmbeddings(model=vector_embedding_model)
+    sparse_embeddings = FastEmbedSparse(model_name=sparse_embedding_model)
 
+    logger.info("Connecting to VectorDB")
     # Connect to existing vector store
     vectorstore = QdrantVectorStore(
         client=client,
@@ -41,6 +47,7 @@ def retrieve_documents(client: QdrantClient,
         query=query,
         k=k,  
     )
+    logger.info(f"Retrieved the results for query: {query}")
 
     return results
 

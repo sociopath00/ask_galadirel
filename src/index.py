@@ -35,7 +35,10 @@ def embedding_and_indexing(client: QdrantClient,
                            data_dir: str,
                            collection_name: str,
                            chunk_size: int,
-                           chunk_overlap: int):
+                           chunk_overlap: int,
+                           vector_embedding_model: str="text-embedding-3-small",
+                           vector_size: int=1536,
+                           sparse_embedding_model: str="Qdrant/bm25"):
     """Create a new collection. Read the PDF documents and create embeddings
     and store it in Qdrant vectorDB
 
@@ -45,6 +48,9 @@ def embedding_and_indexing(client: QdrantClient,
         collection_name: Name of the collection to be created
         chunk_size: Chunk size for splitting the documents
         chunk_overlap: Overlapping while splitting the documents
+        vector_embedding_model: Model to be used for dense vector creation (default: text-embedding-3-small)
+        vector_size: Length of the vector_embedding_model (default: 1536)
+        sparse_embedding_model: Model to be used for sparse embedding creation (default: Qdrant/bm25)
     """
     # Check if collection exists, delete if it exists
     status = check_and_delete(client=client, collection_name=collection_name)
@@ -66,13 +72,13 @@ def embedding_and_indexing(client: QdrantClient,
     documents = text_splitter.split_documents(all_docs)
 
     # Initialize embedding
-    embeddings = OpenAIEmbeddings()     # default embedding model: text-embedding-3-small
-    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+    embeddings = OpenAIEmbeddings(model=vector_embedding_model)     # default embedding model: text-embedding-3-small
+    sparse_embeddings = FastEmbedSparse(model_name=sparse_embedding_model)
     
     # Create a new collection with both Dense and Sparse vectors
     client.create_collection(
         collection_name=collection_name,
-        vectors_config={"dense": VectorParams(size=1536, distance=Distance.COSINE)}, # vector size for text-embedding-3-small is 1536
+        vectors_config={"dense": VectorParams(size=vector_size, distance=Distance.COSINE)}, # vector size for text-embedding-3-small is 1536
         sparse_vectors_config={
             "sparse": SparseVectorParams(index=models.SparseIndexParams(on_disk=False))
         },
@@ -104,11 +110,4 @@ if __name__ == "__main__":
         timeout=120.0  # increase timeout for large inserts
     )
 
-    # Define chunking parameters
-    CHUNK_SIZE = 800
-    CHUNK_OVERLAP = 200
-
-    COLLECTION = config.COLLECTION_NAME
-    DATA_DIR = "./data/*.pdf"
-
-    embedding_and_indexing(client, DATA_DIR, COLLECTION, CHUNK_SIZE, CHUNK_OVERLAP)
+    embedding_and_indexing(client, config.DATA_DIR, config.COLLECTION_NAME, config.CHUNK_SIZE, config.CHUNK_OVERLAP)
