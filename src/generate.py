@@ -8,7 +8,7 @@ import config
 
 
 def generate_answer(query: str,
-                    results: list,
+                    retrieved_docs: list,
                     model_name: str="gpt-4o-mini") -> str:
     """Generate the answers based on provided context for the given query
 
@@ -23,7 +23,7 @@ def generate_answer(query: str,
     logger.info("Stating the generation")
 
     # Concatenate context
-    context = "\n\n".join([result.page_content for result in results])
+    context = "\n\n".join([doc.page_content for doc in retrieved_docs])
 
     # Prepare the prompt
     prompt = ChatPromptTemplate.from_messages([
