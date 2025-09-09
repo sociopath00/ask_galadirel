@@ -1,63 +1,72 @@
-from langchain_openai import ChatOpenAI
-from langchain_core.prompts import ChatPromptTemplate
+import gradio as gr
+import requests
 
-from src.loggers import logger
-from src.retrieval import retrieve_documents
-from qdrant_client import QdrantClient
-import config
+FASTAPI_URL = "http://127.0.0.1:8000/chat"
 
+def ask_galadirel(message, chat_history):
+    if chat_history is None:
+        chat_history = []
 
-def generate_answer(query: str,
-                    retrieved_docs: list,
-                    model_name: str="gpt-4o-mini") -> str:
-    """Generate the answers based on provided context for the given query
+    try:
+        response = requests.post(FASTAPI_URL, json={"query": message})
+        data = response.json()
+        answer = data.get("answer", "Error: No answer from backend")
+    except Exception as e:
+        answer = f"Error: {e}"
 
-    Args:
-        query: User's query
-        retrieved_docs: Context retrived from the vector db
-        model_name: Name of the model used for answer generation (Default: gpt-4o-mini)
-
-    Returns:
-        String of generated answer
+    # User bubble (right aligned, blue)
+    user_msg = f"""
+    <div style='background-color:#007bff;
+                color:white;
+                padding:10px 14px;
+                border-radius:12px;
+                max-width:70%;
+                text-align:left;
+                float:right;
+                clear:both;
+                margin:4px 0'>
+        {message}
+    </div>
     """
-    logger.info("Stating the generation")
 
-    # Concatenate context
-    context = "\n\n".join([doc.page_content for doc in retrieved_docs])
+    # Galadirel bubble (left aligned, dark gray for readability)
+    bot_msg = f"""
+    <div style='background-color:#2f2f2f;
+                color:#f5f5f5;
+                padding:10px 14px;
+                border-radius:12px;
+                max-width:70%;
+                text-align:left;
+                float:left;
+                clear:both;
+                margin:4px 0'>
+        {answer}
+    </div>
+    """
 
-    # Prepare the prompt
-    prompt = ChatPromptTemplate.from_messages([
-        ("system", f"{config.SYS_PROMPT}"),
-        ("user", "Context:\n{context}\n\nQuestion: {question}")
-    ])
+    chat_history.append((user_msg, bot_msg))
+    return chat_history, ""  # clear input
 
-    # Initialize the model
-    llm = ChatOpenAI(model=model_name, temperature=0.3)
+with gr.Blocks(css="footer {visibility: hidden}") as demo:  # hides gradio footer
+    gr.Markdown("<h1 style='text-align:center'>💬 Ask Galadirel</h1>")
 
-    # Create the chain
-    chain = prompt | llm
+    chatbot = gr.Chatbot(height=500, show_label=False)
+    msg = gr.Textbox(
+        placeholder="Ask me anything...",
+        lines=1
+    )
+    submit_btn = gr.Button("Send")
 
-    # Generate the response
-    response = chain.invoke({
-        "context": context,
-        "question": query
-    })
-
-    answer = response.content
-    logger.info("Answer generated successfully")
-    return answer
-
-
-if __name__ == "__main__":
-    # Setup Qdrant client
-    client = QdrantClient(
-        url=config.QDRANT_URL,
-        api_key=config.QDRANT_API_KEY,
-        timeout=60.0,
+    submit_btn.click(
+        ask_galadirel,
+        inputs=[msg, chatbot],
+        outputs=[chatbot, msg]
     )
 
-    query = "What was the age of Frodo in Long unexpected party?"
-    results = retrieve_documents(client, query, collection_name=config.COLLECTION_NAME, k=5)
+    msg.submit(
+        ask_galadirel,
+        inputs=[msg, chatbot],
+        outputs=[chatbot, msg]
+    )
 
-    answer = generate_answer(query=query, results=results)
-    print(answer)
+demo.launch()
